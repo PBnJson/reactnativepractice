@@ -1,11 +1,26 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Stack } from "expo-router";
 
-const AuthLayout = (props: any) => {
+const AuthLayout = () => {
+  const roles = ["teacher", "parent"];
+
   return (
-    <View>
-      <Text>Auth Layout</Text>
-    </View>
+    <Stack>
+      {roles.map((role) => (
+        <Stack.Screen
+          key={`${role}-sign-in`}
+          name={`${role}/sign-in`}
+          options={{ headerShown: false }}
+        />
+      ))}
+      {roles.map((role) => (
+        <Stack.Screen
+          key={`${role}-sign-up`}
+          name={`${role}/sign-up`}
+          options={{ headerShown: false }}
+        />
+      ))}
+    </Stack>
   );
 };
 

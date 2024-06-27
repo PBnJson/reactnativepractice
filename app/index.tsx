@@ -15,7 +15,7 @@ export default function App() {
     >
       <ScrollView contentContainerStyle={{ width: "100%" }}>
         {/* add h-full, height 100 if it doesnt work */}
-        <View className="w-full justify-start items-center px-4">
+        <View className="w-full justify-start items-center px-4 min-h-[85vh]">
           <Image source={images.logo} className="w-[200px] h-[90px]" />
           <Image
             source={images.cards}
@@ -30,10 +30,13 @@ export default function App() {
 
             <View className="flex-row mt-5">
               <Link
-                href={"/home"}
-                className="text-5xl text-purple-400 font-bold text-center mt-5 ml-5"
+                href={{
+                  pathname: "/role-selection",
+                  params: { mode: "sign-in" },
+                }}
+                className="text-4xl text-purple-400 rounded-3xl font-bold font- justify-center items-center border-2 border-white text-center pr-4 pl-4 pt-2 pb-2"
               >
-                Sign In
+                <Text className="">Sign In</Text>
               </Link>
             </View>
             <Image
@@ -44,9 +47,12 @@ export default function App() {
           </View>
           <View className="left-20 bottom-2">
             <LogIn
-              // title="Sign Up"
+              title="Sign Up"
               handlePress={() => {
-                router.push("/sign-up");
+                router.push({
+                  pathname: "/role-selection",
+                  params: { mode: "sign-up" },
+                });
               }}
               // containerStyles={}
               // textStyles={}
