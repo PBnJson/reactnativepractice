@@ -1,46 +1,72 @@
 import React from "react";
-import { View, Text, Button, StyleSheet, TouchableOpacity } from "react-native";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 
 const RoleSelection = () => {
   const router = useRouter();
-  const { mode } = useLocalSearchParams();
 
-  const handleRoleSelection = (role: any) => {
-    console.log("ROLE:>>>", role);
-    router.push(`/(auth)/${role}/${mode}`);
+  const handleRoleSelection = (role: string) => {
+    router.push(`/(auth)/${role}/sign-in?role=${role}`);
   };
 
-  console.log("mode from params AFTER CALL>>>>", mode);
-  console.log("useLocalSearchParams AFTER CALL>>>", useLocalSearchParams());
-
   return (
-    <View className="bg-primary flex-1 justify-center items-center grid grid-cols-3">
-      <Text className="text-5xl text-white">Choose your login</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Choose your login</Text>
       <View>
         <TouchableOpacity
-          className="p-2"
+          style={styles.button}
           onPress={() => handleRoleSelection("teacher")}
         >
-          <Text className="p-4 text-4xl text-purple-400 rounded-3xl font-bold font- justify-center items-center border-2 border-white text-center">
-            Teacher
-          </Text>
+          <Text style={styles.buttonText}>Teacher</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          className="p-2"
+          style={styles.button}
           onPress={() => handleRoleSelection("parent")}
         >
-          <Text className="p-4 text-4xl text-purple-400 rounded-3xl font-bold font- justify-center items-center border-2 border-white text-center">
-            Parent
-          </Text>
+          <Text style={styles.buttonText}>Parent</Text>
         </TouchableOpacity>
       </View>
-      <Text className="text-white text-xs font-pregular">
-        If your a parent and a teacher you have to choose. Many new features{" "}
-        <Text className="text-secondary font-bold text-sm">coming soon.</Text>
+      <Text style={styles.footer}>
+        If you're a parent and a teacher you have to choose. Many new features{" "}
+        <Text style={styles.footerHighlight}>coming soon.</Text>
       </Text>
+      <StatusBar backgroundColor="#161622" style="light" />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#161622",
+  },
+  title: {
+    fontSize: 40,
+    color: "white",
+    marginBottom: 20,
+  },
+  button: {
+    padding: 10,
+    margin: 10,
+    backgroundColor: "#FF9001",
+    borderRadius: 10,
+  },
+  buttonText: {
+    fontSize: 24,
+    color: "white",
+  },
+  footer: {
+    fontSize: 14,
+    color: "gray",
+    textAlign: "center",
+  },
+  footerHighlight: {
+    color: "#FF9001",
+    fontWeight: "bold",
+  },
+});
 
 export default RoleSelection;

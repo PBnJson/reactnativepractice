@@ -16,3 +16,13 @@ I need to have a role based sign in or sign up. After clicking Sign In or Sign U
 > Admin...
 >
 > > so the school can be visible on the go.
+
+## CODE CHANGES TO MAKE
+
+> SafeAreaView does not work with Expo Go Android, styles fail. Workaround used with GlobalStyles.js. SafeAreaView should be imported with react-native-safe-area-context, not react-native.
+
+> Sign In/Up can be made dynamic, create a generic sign in and sign up component passing role as props. Instead of having 4 or more sign in/up files you would just have 2 and render based on role.
+
+## NOTES ON CONNECTING TO MAIN APP
+
+> Accept and Transmit cookies

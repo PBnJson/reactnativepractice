@@ -1,13 +1,25 @@
+import { useEffect } from "react";
 import React from "react";
 import { SafeAreaView, Text, View, ScrollView, Image } from "react-native";
 import GlobalStyles from "../GlobalStyles.js";
 import images from "@/constants/images.js";
-import { Link, Redirect, router } from "expo-router";
+import { Link, router } from "expo-router";
 import LogIn from "../components/LogIn";
 import { StatusBar } from "expo-status-bar";
-// import { SafeAreaView } from "react-native-safe-area-context";
+import { callRpc } from "../utils/net";
 
 export default function App() {
+  useEffect(() => {
+    const getInitial = async () => {
+      const res = await callRpc({
+        method: "user.get.initial",
+        params: {},
+        id: "1",
+      });
+      console.log("RES>>>", res);
+    };
+    getInitial();
+  }, []);
   return (
     <SafeAreaView
       className="bg-primary h-full"
@@ -63,7 +75,7 @@ export default function App() {
           </Text>
         </View>
       </ScrollView>
-      <StatusBar backgroundColor={"#161622"} style="light" />
+      <StatusBar backgroundColor="#161622" style="light" />
     </SafeAreaView>
   );
 }
