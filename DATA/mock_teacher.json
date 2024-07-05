@@ -1,0 +1,254 @@
+{
+  "success": true,
+  "d": {
+    "user": {
+      "id": "e2307507-8a30-4d33-b240-87ef4bd9445a",
+      "first_name": "TeacherFirstName",
+      "last_name": "TeacherLastName",
+      "profile_picture_url": null
+    },
+    "students_view": {
+      "ea467520": {
+        "id": "ea467520",
+        "first_name": "Maria",
+        "last_name": "Test",
+        "picture_url": null,
+        "school_id": null,
+        "school_picture_url": null,
+        "store_key_hash": "43305",
+        "reward_events": [],
+        "guardians": [],
+        "student_groups": [],
+        "student_classes": [
+          {
+            "id": "e45d6e1c",
+            "alias_name": null,
+            "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+            "classroom": {
+              "id": "b21a2627-e687-4699-8780-7423bc8c5080",
+              "name": "A Test Class 1",
+              "grade_level": "4",
+              "description": null,
+              "staff": [
+                {
+                  "id": "e2307507",
+                  "username": null,
+                  "first_name": "TeacherFirstName",
+                  "last_name": "TeacherLastName",
+                  "accountId": "316c63d4",
+                  "createdAt": {}
+                }
+              ],
+              "class_roles": [],
+              "class_groups": [],
+              "students_view": [
+                {
+                  "id": "e45d6e1c",
+                  "alias_name": null,
+                  "points_goal": 500,
+                  "studentId": "ea467520",
+                  "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+                  "createdAt": {}
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "b123": {
+        "id": "b123",
+        "first_name": "Bob",
+        "last_name": "Carroll",
+        "picture_url": null,
+        "school_id": null,
+        "school_picture_url": null,
+        "store_key_hash": "1234",
+        "reward_events": [],
+        "guardians": [],
+        "student_groups": [],
+        "student_classes": [
+          {
+            "id": "e45d6e1c",
+            "alias_name": null,
+            "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+            "classroom": {
+              "id": "b21a2627-e687-4699-8780-7423bc8c5080",
+              "name": "A Test Class 1",
+              "grade_level": "4",
+              "description": null,
+              "staff": [
+                {
+                  "id": "e2307507",
+                  "username": null,
+                  "first_name": "TeacherFirstName",
+                  "last_name": "TeacherLastName",
+                  "accountId": "316c63d4",
+                  "createdAt": {}
+                }
+              ],
+              "class_roles": [],
+              "class_groups": [],
+              "students_view": [
+                {
+                  "id": "e45d6e1c",
+                  "alias_name": null,
+                  "points_goal": 500,
+                  "studentId": "b123",
+                  "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+                  "createdAt": {}
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "j456": {
+        "id": "j456",
+        "first_name": "Jane",
+        "last_name": "Jetson",
+        "picture_url": null,
+        "school_id": null,
+        "school_picture_url": null,
+        "store_key_hash": "4567",
+        "reward_events": [],
+        "guardians": [],
+        "student_groups": [],
+        "student_classes": [
+          {
+            "id": "e45d6e1c",
+            "alias_name": null,
+            "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+            "classroom": {
+              "id": "b21a2627-e687-4699-8780-7423bc8c5080",
+              "name": "A Test Class 1",
+              "grade_level": "4",
+              "description": null,
+              "staff": [
+                {
+                  "id": "e2307507",
+                  "username": null,
+                  "first_name": "TeacherFirstName",
+                  "last_name": "TeacherLastName",
+                  "accountId": "316c63d4",
+                  "createdAt": {}
+                }
+              ],
+              "class_roles": [],
+              "class_groups": [],
+              "students_view": [
+                {
+                  "id": "e45d6e1c",
+                  "alias_name": null,
+                  "points_goal": 500,
+                  "studentId": "j456",
+                  "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+                  "createdAt": {}
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "user_orgs": [
+      {
+        "id": "9baddeec-fc80-4d34-86b7-d875cc7beef6",
+        "name": "Test School 001",
+        "district": null,
+        "org_reporting_info": null,
+        "user_org_roles": [
+          {
+            "id": "aaa2e27f-dfe3-4478-ab0e-9e37c91eac9c",
+            "role_name": "TEACHER",
+            "policy": {
+              "actions": []
+            },
+            "org_verified": false,
+            "principalId": "e2307507",
+            "orgId": "9baddeec-fc80-4d34-86b7-d875cc7beef6",
+            "createdAt": {},
+            "updatedAt": {}
+          }
+        ],
+        "user_org_groups": [],
+        "user_classes": ["b21a2627", "c789"],
+        "org_groups": [
+          {
+            "id": "f29f2e8c-4a02-4640-b9ba-6661c9e59d61",
+            "name": "Purple",
+            "color": "#8800d1",
+            "picture_url": null,
+            "reward_events": []
+          }
+        ],
+        "org_classes": [
+          {
+            "id": "b21a2627",
+            "name": "A Test Class 1",
+            "grade_level": "4",
+            "staff": [
+              {
+                "id": "e2307507",
+                "username": null,
+                "first_name": "TeacherFirstName",
+                "last_name": "TeacherLastName",
+                "accountId": "316c63d4",
+                "createdAt": {}
+              }
+            ],
+            "class_roles": [],
+            "class_groups": [],
+            "students_view": [
+              {
+                "id": "e45d6e1c",
+                "alias_name": null,
+                "points_goal": 500,
+                "studentId": "ea467520",
+                "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+                "createdAt": {}
+              },
+              {
+                "id": "b123",
+                "alias_name": null,
+                "points_goal": 500,
+                "studentId": "b123",
+                "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+                "createdAt": {}
+              },
+              {
+                "id": "j456",
+                "alias_name": null,
+                "points_goal": 500,
+                "studentId": "j456",
+                "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+                "createdAt": {}
+              }
+            ]
+          },
+          {
+            "id": "c789",
+            "name": "A Test Class 2",
+            "grade_level": "4",
+            "staff": [
+              {
+                "id": "e2307507",
+                "username": null,
+                "first_name": "TeacherFirstName",
+                "last_name": "TeacherLastName",
+                "accountId": "316c63d4",
+                "createdAt": {}
+              }
+            ],
+            "class_roles": [],
+            "class_groups": [],
+            "students_view": []
+          }
+        ],
+        "org_members": [],
+        "org_students": [],
+        "guardian_connection_requests": []
+      }
+    ],
+    "children": []
+  }
+}

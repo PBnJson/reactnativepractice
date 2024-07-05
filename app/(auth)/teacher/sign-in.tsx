@@ -12,6 +12,9 @@ import { images } from "../../../constants";
 import FormField from "../../../components/FormField";
 import LogIn from "../../../components/LogIn";
 import { useLocalSearchParams } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import { callRpc } from "@/utils/net";
 
 interface SignUpForm {
   email: string;
@@ -27,8 +30,29 @@ const SignIn = () => {
   });
   const [loadingState, setLoadingState] = useState<any>(false);
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+    try {
+      const loginData = {
+        email: form.email,
+        password: form.password,
+      };
+      console.log("LOGIN FORM DATA>>>", loginData);
+      const res = await callRpc({
+        id: 2,
+        method: "user.account.login",
+        params: { user: loginData },
+      });
+
+      if (res && res.result && res.result.token) {
+        await AsyncStorage.setItem("jwtToken", res.result.token);
+        console.log("User logged in and token stored successfully.");
+      } else {
+        console.error("Login failed:", res.error);
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+    }
   };
 
   // may need to add GlobalStyles.AndroidSafeArea

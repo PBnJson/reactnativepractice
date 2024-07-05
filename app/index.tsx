@@ -6,20 +6,20 @@ import images from "@/constants/images.js";
 import { Link, router } from "expo-router";
 import LogIn from "../components/LogIn";
 import { StatusBar } from "expo-status-bar";
-import { callRpc } from "../utils/net";
+// import { callRpc } from "../utils/net";
 
 export default function App() {
-  useEffect(() => {
-    const getInitial = async () => {
-      const res = await callRpc({
-        method: "user.get.initial",
-        params: {},
-        id: "1",
-      });
-      console.log("RES>>>", res);
-    };
-    getInitial();
-  }, []);
+  // useEffect(() => {
+  //   const getInitial = async () => {
+  //     const res = await callRpc({
+  //       method: "user.get.initial",
+  //       params: {},
+  //       id: "1",
+  //     });
+  //     console.log("RES>>>", res);
+  //   };
+  //   getInitial();
+  // }, []);
   return (
     <SafeAreaView
       className="bg-primary h-full"
