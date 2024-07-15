@@ -148,6 +148,53 @@
             }
           }
         ]
+      },
+      "s015": {
+        "id": "s015",
+        "first_name": "Alice",
+        "last_name": "Black",
+        "picture_url": null,
+        "school_id": null,
+        "school_picture_url": null,
+        "store_key_hash": "6780",
+        "reward_events": [],
+        "guardians": [],
+        "student_groups": [],
+        "student_classes": [
+          {
+            "id": "e45d6e1c",
+            "alias_name": null,
+            "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+            "classroom": {
+              "id": "b21a2627-e687-4699-8780-7423bc8c5080",
+              "name": "A Test Class 1",
+              "grade_level": "4",
+              "description": null,
+              "staff": [
+                {
+                  "id": "e2307507",
+                  "username": null,
+                  "first_name": "TeacherFirstName",
+                  "last_name": "TeacherLastName",
+                  "accountId": "316c63d4",
+                  "createdAt": {}
+                }
+              ],
+              "class_roles": [],
+              "class_groups": [],
+              "students_view": [
+                {
+                  "id": "e45d6e1c",
+                  "alias_name": null,
+                  "points_goal": 500,
+                  "studentId": "s015",
+                  "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+                  "createdAt": {}
+                }
+              ]
+            }
+          }
+        ]
       }
     },
     "user_orgs": [
@@ -220,6 +267,46 @@
                 "alias_name": null,
                 "points_goal": 500,
                 "studentId": "j456",
+                "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+                "createdAt": {}
+              },
+              {
+                "id": "s015-1",
+                "alias_name": null,
+                "points_goal": 500,
+                "studentId": "s015-1",
+                "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+                "createdAt": {}
+              },
+              {
+                "id": "s016-2",
+                "alias_name": null,
+                "points_goal": 500,
+                "studentId": "s016-2",
+                "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+                "createdAt": {}
+              },
+              {
+                "id": "s017-3",
+                "alias_name": null,
+                "points_goal": 500,
+                "studentId": "s017-3",
+                "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+                "createdAt": {}
+              },
+              {
+                "id": "s018-4",
+                "alias_name": null,
+                "points_goal": 500,
+                "studentId": "s018-4",
+                "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
+                "createdAt": {}
+              },
+              {
+                "id": "s019-5",
+                "alias_name": null,
+                "points_goal": 500,
+                "studentId": "s019-5",
                 "classroomId": "b21a2627-e687-4699-8780-7423bc8c5080",
                 "createdAt": {}
               }

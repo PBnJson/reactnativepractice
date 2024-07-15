@@ -1,61 +1,69 @@
 import React, { useState } from "react";
 import {
-  View,
-  Text,
   SafeAreaView,
   ScrollView,
+  View,
+  Text,
   Image,
   StyleSheet,
 } from "react-native";
-// import GlobalStyles from "../../../GlobalStyles";
-import { images } from "../../../constants";
-import FormField from "../../../components/FormField";
-import LogIn from "../../../components/LogIn";
 import { useLocalSearchParams } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+// import GlobalStyles from "../../../GlobalStyles.js";
+import images from "@/constants/images.js";
+import FormField from "../../../components/FormField";
+import LogIn from "../../../components/LogIn";
+import { router } from "expo-router";
 import { callRpc } from "@/utils/net";
-
-interface SignUpForm {
-  email: string;
-  password: string;
-}
 
 const SignIn = () => {
   const { role } = useLocalSearchParams();
 
-  const [form, setForm] = useState<SignUpForm>({
+  const [form, setForm] = useState({
     email: "",
     password: "",
   });
-  const [loadingState, setLoadingState] = useState<any>(false);
+  const [loadingState, setLoadingState] = useState(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setLoadingState(true);
     try {
-      const loginData = {
-        email: form.email,
-        password: form.password,
-      };
-      console.log("LOGIN FORM DATA>>>", loginData);
-      const res = await callRpc({
-        id: 2,
+      const data = await callRpc({
+        id: "123",
         method: "user.account.login",
-        params: { user: loginData },
+        params: {
+          user: {
+            email: form.email,
+            password: form.password,
+          },
+        },
       });
 
-      if (res && res.result && res.result.token) {
-        await AsyncStorage.setItem("jwtToken", res.result.token);
-        console.log("User logged in and token stored successfully.");
-      } else {
-        console.error("Login failed:", res.error);
+      console.log("RES HEADERS>>>>>", data?._resHeaders);
+
+      console.log("LOGIN RES JSON>>>> ", data);
+
+      const authToken = data?._resHeaders?.get("authorization");
+
+      console.log("AUTHTOKEN>>>>", authToken);
+
+      console.log("DATA LOGIN>>>", data);
+
+      if (authToken) {
+        // Simulate successful login and store a token
+        await AsyncStorage.setItem("jwtToken", authToken);
+        console.log("saved token>>>>");
       }
+      // Navigate to the home screen
+      router.push("/teacher/home-screen");
     } catch (error) {
-      console.error("Login error:", error);
+      console.error("Login error>>>>", error);
+    } finally {
+      setLoadingState(false);
     }
   };
 
-  // may need to add GlobalStyles.AndroidSafeArea
   return (
     <SafeAreaView style={[styles.safeArea]}>
       <ScrollView>
@@ -87,7 +95,6 @@ const SignIn = () => {
     </SafeAreaView>
   );
 };
-
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,

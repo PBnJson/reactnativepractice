@@ -20,6 +20,14 @@ const AuthLayout = () => {
           options={{ headerShown: false }}
         />
       ))}
+      <Stack.Screen
+        name="teacher/home-screen"
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="teacher/classroom-screen"
+        options={{ headerShown: false }}
+      />
     </Stack>
   );
 };

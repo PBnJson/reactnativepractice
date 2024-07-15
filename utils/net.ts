@@ -2,10 +2,13 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const callRpc = async ({
   method,
-  params,
+  params = {},
   id = "1",
-  endpoint = "https://91b9-64-72-56-36.ngrok-free.app/api/rpc",
+  // SEND HERE IN PROD > https://pointing-up.com/api/rpc
+  endpoint = "https://4233-64-72-56-36.ngrok-free.app/api/rpc",
+  authorizationHeader,
 }: any) => {
+  params.requestAuthTokenHeader = "Authorization";
   const rpcBody = {
     jsonrpc: "2.0",
     method,
@@ -14,6 +17,7 @@ export const callRpc = async ({
   };
 
   try {
+    // SENDING OUT
     const token = await AsyncStorage.getItem("jwtToken");
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
@@ -21,9 +25,10 @@ export const callRpc = async ({
     };
 
     if (token) {
-      headers["Authorization"] = `Bearer ${token}`;
+      headers["Authorization"] = `${token}`;
     }
 
+    // GETTING BACK
     const res = await fetch(endpoint, {
       method: "POST",
       headers,
@@ -31,6 +36,7 @@ export const callRpc = async ({
     });
 
     const resJSON = await res.json();
+    resJSON._resHeaders = res.headers;
     return resJSON;
   } catch (err) {
     console.error("RPC CALL ERROR>>>> ", err);
