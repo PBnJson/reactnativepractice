@@ -5,7 +5,7 @@ export const callRpc = async ({
   params = {},
   id = "1",
   // SEND HERE IN PROD > https://pointing-up.com/api/rpc
-  endpoint = "https://4233-64-72-56-36.ngrok-free.app/api/rpc",
+  endpoint = "https://63e3-64-72-56-36.ngrok-free.app/api/rpc",
   authorizationHeader,
 }: any) => {
   params.requestAuthTokenHeader = "Authorization";
@@ -18,10 +18,12 @@ export const callRpc = async ({
 
   try {
     // SENDING OUT
+    // use more secure storage
     const token = await AsyncStorage.getItem("jwtToken");
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
       "X-Csrf-Header": "2", // Custom header which cannot be set outside of same-origin policy
+      "ngrok-skip-browser-warning": "skip-browser-warning",
     };
 
     if (token) {

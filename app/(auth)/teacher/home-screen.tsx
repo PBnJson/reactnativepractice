@@ -9,18 +9,31 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import mockData from "../../../DATA/mock_teacher.json";
+import { callRpc } from "@/utils/net";
 
 const TeacherHomeScreen = () => {
   const [classrooms, setClassrooms] = useState<any>([]);
   const router = useRouter();
 
   useEffect(() => {
-    const parseData = () => {
-      const userOrgs = mockData.d.user_orgs || [];
-      const userClasses = userOrgs.flatMap((org: any) => org.org_classes);
+    const userData = async () => {
+      const data = await callRpc({
+        id: "2",
+        method: "user.get.initial",
+        params: {},
+      });
+      const userOrgs = data?.result?.d?.user_orgs || [];
+      // console.log("USER ORG RPC RES>>>", userOrgs);
+
+      const userClasses = userOrgs?.flatMap((org: any) => {
+        return org.org_classes;
+      });
+      // console.log("USER CLASSES MAP>>>", userClasses);
+      console.log("### USER MAP ###", userClasses);
       setClassrooms(userClasses);
     };
-    parseData();
+    userData();
+    console.log("***USER CLASSROOMS***", classrooms);
   }, []);
 
   const handlePress = (classroomId: any) => {
