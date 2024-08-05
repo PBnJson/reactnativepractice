@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "nativepractice",
-    "slug": "nativepractice",
+    "slug": "pointing-up-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -31,6 +31,15 @@
     "experiments": {
       "typedRoutes": true
     },
-    "platform": ["android", "ios"]
+    "platform": ["android", "ios"],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "337b2f5d-b365-4344-8b4e-7aae383e5945"
+      }
+    },
+    "owner": "pointingup"
   }
 }

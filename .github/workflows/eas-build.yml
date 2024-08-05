@@ -1,0 +1,40 @@
+name: EAS Build
+
+on:
+  push:
+    branches:
+      - easDevBuild
+      - easProduction
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20.14.0"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: EAS Build
+        run: |
+          npm install -g eas-cli
+          eas build --profile ${{ github.ref == 'refs/heads/easDevBuild' && 'development' || 'production' }} --platform all
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+
+      - name: EAS Submit
+        if: github.ref == 'refs/heads/easProduction'
+        run: |
+          eas submit --platform all --profile production
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}

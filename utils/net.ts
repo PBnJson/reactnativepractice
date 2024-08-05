@@ -5,7 +5,7 @@ export const callRpc = async ({
   params = {},
   id = "1",
   // SEND HERE IN PROD > https://pointing-up.com/api/rpc
-  endpoint = "https://63e3-64-72-56-36.ngrok-free.app/api/rpc",
+  endpoint = "e413-64-72-56-36.ngrok-free.app/api/rpc",
   authorizationHeader,
 }: any) => {
   params.requestAuthTokenHeader = "Authorization";
