@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   SafeAreaView,
   Text,
@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   Alert,
+  Pressable,
 } from "react-native";
 import "react-native-gesture-handler";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -19,6 +20,8 @@ import { callRpc } from "../utils/net";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
   useEffect(() => {
     const getInitial = async () => {
       const res = await callRpc({
@@ -30,6 +33,34 @@ export default function App() {
     };
     getInitial();
   }, []);
+
+  // useEffect(() => {
+  //   console.log("Current theme:", isDarkMode ? "Dark" : "Light");
+  // }, [isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode((prevMode) => {
+      console.log("Toggling theme. New theme:", !prevMode ? "Dark" : "Light");
+      return !prevMode;
+    });
+  };
+
+  const themeStyles = isDarkMode
+    ? {
+        "bg-primary": "bg-gray-900",
+        "bg-secondary": "bg-gray-800",
+        "text-primary": "text-white",
+        "text-secondary": "text-gray-300",
+      }
+    : {
+        "bg-primary": "bg-white",
+        "bg-secondary": "bg-gray-100",
+        "text-primary": "text-black",
+        "text-secondary": "text-gray-700",
+      };
+
+  console.log("Rendering with theme:", isDarkMode ? "Dark" : "Light");
+
   const clearStorage = async () => {
     try {
       // use something more secure for storage
@@ -48,12 +79,21 @@ export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaView
-        className="bg-primary h-full"
+        className={`${themeStyles["bg-primary"]} h-full`}
         style={GlobalStyles.AndroidSafeArea}
       >
         <ScrollView contentContainerStyle={{ width: "100%" }}>
           {/* add h-full, height 100 if it doesnt work */}
           <View className="w-full justify-start items-center px-4 min-h-[85vh]">
+            <Pressable
+              onPress={toggleTheme}
+              className={`absolute top-4 right-4 z-10 w-8 h-8 rounded-full flex items-center justify-center ${themeStyles["bg-secondary"]}`}
+            >
+              <Text className={themeStyles["text-primary"]}>
+                {isDarkMode ? "☀️" : "🌙"}
+              </Text>
+            </Pressable>
+
             <Image source={images.logo} className="w-[200px] h-[90px]" />
             <Image
               source={images.cards}
@@ -62,7 +102,9 @@ export default function App() {
             />
             <View className="relative mt-5">
               {/* THIS RIGHT HERE>>>> */}
-              <Text className="text-3xl text-white font-bold text-center">
+              <Text
+                className={`text-3xl ${themeStyles["text-primary"]} font-bold text-center`}
+              >
                 Reward, Compete, Spend
               </Text>
 
@@ -72,16 +114,18 @@ export default function App() {
                     pathname: "/role-selection",
                     params: { mode: "sign-in" },
                   }}
-                  className="text-4xl text-purple-400 rounded-3xl font-bold font- justify-center items-center border-2 border-white text-center pr-4 pl-4 pt-2 pb-2"
+                  className={`text-4xl ${themeStyles["text-secondary"]} font-bold justify-center items-center border-2 border-${themeStyles["text-primary"]} rounded-3xl text-center px-4 py-2 ${themeStyles["bg-secondary"]}`}
                 >
-                  <Text className="">Sign In</Text>
+                  <Text className={themeStyles["text-secondary"]}>Sign In</Text>
                 </Link>
               </View>
               <TouchableOpacity
                 className="m-2 "
                 onPress={handleConfirmClearStorage}
               >
-                <Text className=" p-2 text-2xl text-red-500 font-extrabold border-solid border-2 border-sky-500 border-x-2 rounded-2xl bg-slate-300 text-center self-start">
+                <Text
+                  className={`p-2 text-2xl ${themeStyles["text-secondary"]} font-extrabold border-solid border-2 border-${themeStyles["text-primary"]} rounded-2xl ${themeStyles["bg-secondary"]} text-center self-start`}
+                >
                   Clear Data
                 </Text>
               </TouchableOpacity>
@@ -105,12 +149,14 @@ export default function App() {
               />
             </View>
 
-            <Text className="text-lg text-gray-100 font-bold font-pregular text-center mt-10">
+            <Text
+              className={`text-lg ${themeStyles["text-primary"]} font-bold font-standard text-center mt-10`}
+            >
               Zero setup required for teachers or parents.
             </Text>
           </View>
         </ScrollView>
-        <StatusBar backgroundColor="#161622" style="light" />
+        <StatusBar style={isDarkMode ? "light" : "dark"} />
       </SafeAreaView>
     </GestureHandlerRootView>
   );

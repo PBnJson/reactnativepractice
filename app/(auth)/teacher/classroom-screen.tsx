@@ -43,18 +43,6 @@ const ClassroomScreen: React.FC = () => {
   });
 
   useEffect(() => {
-    if (error) throw error;
-
-    if (fontsLoaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded, error]);
-
-  if (!fontsLoaded && !error) {
-    return null;
-  }
-
-  useEffect(() => {
     const fetchClassroomData = async () => {
       const data = await callRpc({
         id: "2",
@@ -99,6 +87,18 @@ const ClassroomScreen: React.FC = () => {
       useNativeDriver: true,
     }).start();
   }, [classroomId]);
+
+  useEffect(() => {
+    if (error) throw error;
+
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, error]);
+
+  if (!fontsLoaded && !error) {
+    return null;
+  }
 
   // Create sortStudents.ts and add these: sort by: group, last_name, first_name, point_value, etc.
 
